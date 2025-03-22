@@ -1,0 +1,51 @@
+CREATE TABLE Users (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(100),
+    balance_thb DECIMAL(10, 2),
+    balance_usd DECIMAL(10, 2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Cryptocurrency (
+    crypto_id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    symbol VARCHAR(10),
+    price_in_usd DECIMAL(10, 2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Wallet (
+    wallet_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES Users(user_id),
+    crypto_id INT REFERENCES Cryptocurrency(crypto_id),
+    balance DECIMAL(10, 2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Transaction (
+    transaction_id SERIAL PRIMARY KEY,
+    from_user_id INT REFERENCES Users(user_id),
+    to_user_id INT REFERENCES Users(user_id),
+    crypto_id INT REFERENCES Cryptocurrency(crypto_id),
+    amount DECIMAL(10, 2),
+    transaction_type VARCHAR(50),
+    transaction_status VARCHAR(50),
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Payment (
+    payment_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES Users(user_id),
+    amount DECIMAL(10, 2),
+    payment_method VARCHAR(50),
+    status VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
