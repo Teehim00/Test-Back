@@ -12,7 +12,7 @@ npm install
 File in folder CREATE TABLE
 
 ### 4. Set Up Environment Variables
-Create a file .env.local
+Create a file .env
 
 ### 4. Run seed Inseart data
 node scripts/seed.js
