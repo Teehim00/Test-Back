@@ -21,7 +21,10 @@ node scripts/seed.js
 node server.js
 
 
+
 ﻿## Test Postman
+
+
 
 GET /users/:userId 
 http://localhost:3000/api/users/1
