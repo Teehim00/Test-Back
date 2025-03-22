@@ -1,8 +1,7 @@
 ﻿## Install Project
 
-```bash
-### 1. Clone Project
 
+### 1. Clone Project
 git clone https://github.com/Teehim00/Test-Back.git
 cd Test-Back
 
